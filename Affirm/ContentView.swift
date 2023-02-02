@@ -9,7 +9,6 @@ import SwiftUI
 import UserNotifications
 
 struct ContentView: View {
-    private let affirmationText = ["one", "two", "three"]
     var body: some View {
         VStack {
             Spacer()
@@ -25,43 +24,42 @@ struct ContentView: View {
             
             Spacer()
 
-            Button("Schedule Notification") {
-                generateHourlyNotification()
+            Button("Schedule Affirmations") {
+                scheduleAffirmations()
             }
             Spacer()
         }
     }
     
-    private func generateNotificationRequests() {
-        var timeInterval = 0
+    private func scheduleAffirmations() {
+        var affirmationText = ["one", "two", "three"]
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
         
-        for text in affirmationText {
-            timeInterval += 1
+        let hours = generateHours()
+        
+        for i in 0...2 {
             let content = UNMutableNotificationContent()
-            content.title = text
-            content.sound = UNNotificationSound.default
+            content.title = affirmationText.randomElement()!
+            affirmationText.removeAll(where: { $0 == content.title })
             
             var date = DateComponents()
-            date.minute = 1
-            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+            date.hour = hours[i]
+            date.minute = Int.random(in: 0...59)
             
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request)
+            center.add(request)
+            print(request)
         }
     }
     
-    private func generateHourlyNotification() {
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        content.title = "Hourly Notification"
-        content.body = "This is an hourly notification"
-
-        var date = DateComponents()
-        date.minute = 1
-        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-
-        let request = UNNotificationRequest(identifier: "hourly_notification", content: content, trigger: trigger)
-        center.add(request)
+    private func generateHours() -> [Int] {
+        var output = [Int]()
+        output.append(Int.random(in: 8...12))
+        output.append(Int.random(in: 13...17))
+        output.append(Int.random(in: 18...22))
+        return output
     }
 }
 
