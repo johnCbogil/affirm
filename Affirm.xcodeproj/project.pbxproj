@@ -19,6 +19,7 @@
 		94493AC62989E0B20067EDED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		94493AC82989E0B30067EDED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94493ACB2989E0B30067EDED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		94EFA99F298D751100337CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 		94493AC32989E0B20067EDED /* Affirm */ = {
 			isa = PBXGroup;
 			children = (
+				94EFA99F298D751100337CF7 /* Info.plist */,
 				94493AC42989E0B20067EDED /* AffirmApp.swift */,
 				94493AC62989E0B20067EDED /* ContentView.swift */,
 				94493AC82989E0B30067EDED /* Assets.xcassets */,
@@ -270,6 +272,7 @@
 				DEVELOPMENT_TEAM = FSG38ZWRPB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Affirm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +302,7 @@
 				DEVELOPMENT_TEAM = FSG38ZWRPB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Affirm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
