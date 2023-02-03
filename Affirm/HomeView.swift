@@ -9,7 +9,8 @@ import SwiftUI
 import UserNotifications
 
 struct HomeView: View {
-    private let sampleData = ["four", "five", "six"]
+    @ObservedObject var dataStore: DataStore
+
     var body: some View {
 
         VStack {
@@ -24,7 +25,7 @@ struct HomeView: View {
             }
             NavigationStack {
                 List {
-                    ForEach(sampleData, id: \.self) { text in
+                    ForEach(dataStore.currentlyScheduledAffirmations, id: \.self) { text in
                         Text(text)
                     }
                 }
@@ -34,8 +35,8 @@ struct HomeView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}

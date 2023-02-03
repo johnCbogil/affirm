@@ -13,15 +13,17 @@ import UserNotifications
 struct AffirmApp: App {
     @Environment(\.scenePhase) private var phase
     private let scheduleAffirmationsIdentifier = "myapprefresh"
+    private let dataStore = DataStore()
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(dataStore: dataStore)
         }
         .onChange(of: phase) { newPhase in
             switch newPhase {
-            case .active: scheduleAffirmations()
-            case .background: scheduleAppRefresh()
+            case .active:
+                scheduleAffirmations()
+                scheduleAppRefresh()
             default: break
             }
         }
