@@ -21,9 +21,7 @@ struct AffirmApp: App {
         }
         .onChange(of: phase) { newPhase in
             switch newPhase {
-            case .active:
-                scheduleAffirmations()
-                scheduleAppRefresh()
+            case .active: scheduleAppRefresh()
             default: break
             }
         }
