@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  Affirm
 //
 //  Created by John Bogil on 1/31/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import UserNotifications
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         VStack {
             Button("Request Permission") {
@@ -26,6 +26,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }

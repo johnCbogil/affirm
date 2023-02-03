@@ -16,7 +16,7 @@ struct AffirmApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
         .onChange(of: phase) { newPhase in
             switch newPhase {
