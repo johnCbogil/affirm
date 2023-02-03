@@ -9,7 +9,9 @@ import SwiftUI
 import UserNotifications
 
 struct HomeView: View {
+    private let sampleData = ["four", "five", "six"]
     var body: some View {
+
         VStack {
             Button("Request Permission") {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -19,6 +21,14 @@ struct HomeView: View {
                         print(error.localizedDescription)
                     }
                 }
+            }
+            NavigationStack {
+                List {
+                    ForEach(sampleData, id: \.self) { text in
+                        Text(text)
+                    }
+                }
+                .navigationTitle("Currently Scheduled")
             }
         }
     }
