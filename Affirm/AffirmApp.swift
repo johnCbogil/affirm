@@ -13,11 +13,10 @@ import UserNotifications
 struct AffirmApp: App {
     @Environment(\.scenePhase) private var phase
     private let scheduleAffirmationsIdentifier = "myapprefresh"
-    private let dataStore = DataStore()
 
     var body: some Scene {
         WindowGroup {
-            HomeView(dataStore: dataStore)
+            HomeView()
         }
         .onChange(of: phase) { newPhase in
             switch newPhase {
@@ -47,7 +46,7 @@ struct AffirmApp: App {
             date.hour = hours[i]
             date.minute = Int.random(in: 0...59)
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             center.add(request)
             print(request)
@@ -64,7 +63,7 @@ struct AffirmApp: App {
     
     private func scheduleAppRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: scheduleAffirmationsIdentifier)
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 24 * 60 * 60) // 24 hours from now
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 21600) // 6 hours from now
         try? BGTaskScheduler.shared.submit(request)
     }
 }
