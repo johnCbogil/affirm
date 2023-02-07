@@ -46,7 +46,7 @@ struct AffirmApp: App {
             date.hour = hours[i]
             date.minute = Int.random(in: 0...59)
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             center.add(request)
             print(request)
@@ -63,7 +63,7 @@ struct AffirmApp: App {
     
     private func scheduleAppRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: scheduleAffirmationsIdentifier)
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 21600) // 6 hours from now
-        try? BGTaskScheduler.shared.submit(request)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 3600) // 1 hours from now
+        try! BGTaskScheduler.shared.submit(request)
     }
 }
