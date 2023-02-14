@@ -47,7 +47,7 @@ struct ContentView: View {
             date.hour = hours[i]
             date.minute = Int.random(in: 0...59)
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             center.add(request)
             print(request)
