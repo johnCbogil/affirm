@@ -53,6 +53,13 @@ struct AffirmApp: App {
         }
     }
     
+    private func getTestDate() -> DateComponents {
+        var date = DateComponents()
+        date.hour = 21
+        date.minute = 40
+        return date
+    }
+    
     private func generateHours() -> [Int] {
         var output = [Int]()
         output.append(Int.random(in: 8...12))
